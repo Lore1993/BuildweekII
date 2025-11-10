@@ -20,10 +20,9 @@
   <body>
     <main class="bg-black">
       <div class="row d-flex g-0 text-white ps-2">
-        <!-- NAVBAR SINISTRA -->
-
+        <!-- NAVBAR SINISTRA MEDIUM-->
         <div
-          class="col col-12 col-md-3 flex-column bg-black vh-100 px-3 py-2 position-sticky bottom-0"
+          class="d-none d-md-flex col col-12 col-md-3 flex-column bg-black vh-100 px-3 py-2"
         >
           <div class="col">
             <div class="mb-3">
@@ -66,6 +65,37 @@
             <div class="d-none d-md-flex"><p>TITOLI PLAYLIST</p></div>
           </div>
         </div>
+        <!-- NAVBAR SINISTRA SMALL -->
+
+        <nav class="navbar fixed-bottom bg-transparent p-0">
+          <div class="container-fluid p-0">
+            <div
+              class="row d-md-none d-flex px-3 py-2 sticky-bottom vw-100 justify-content-around"
+            >
+              <div class="col mb-3 flex-column text-center">
+                <a
+                  href="#"
+                  class="my-0 text-secondary text-decoration-none text-white"
+                  ><i class="bi bi-house-door-fill"></i>
+                  <p>Home</p>
+                </a>
+              </div>
+              <div class="col mb-3 flex-column text-center">
+                <a href="#" class="my-0 text-secondary text-decoration-none"
+                  ><i class="bi bi-search"></i>
+                  <p>Cerca</p></a
+                >
+              </div>
+              <div class="col mb-3 flex-column text-center">
+                <a href="#" class="my-0 text-secondary text-decoration-none"
+                  ><i class="bi bi-music-note-list"></i>
+                  <p>Libreria</p></a
+                >
+              </div>
+            </div>
+          </div>
+        </nav>
+
         <!-- DIV CENTRALE -->
         <div class="col col-12 col-md-7 flex-column vh-100 bg-dark px-3 py-2">
           <div class="d-flex flex-row gap-2 justify-content-between">
