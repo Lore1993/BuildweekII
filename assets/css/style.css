@@ -16,6 +16,15 @@ body {
 }
 
 .imgAlbum {
-  width: 150px;
-  height: 150px;
+  width: 180px;
+  height: 180px;
+}
+
+.bg-div-centrale {
+  background: #000000;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(48, 48, 48, 1) 100%
+  );
 }

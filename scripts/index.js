@@ -5,9 +5,9 @@ const idAlbum4 = "399123947";
 const idAlbum5 = "80274812";
 
 const arrayIdAlbum = [
-  "230935602", //La voce del padrone
+  "245956", //La voce del padrone
   "46787432", //17
-  "75621062", //Bohemian Rhapsody
+  "301773", //Mezzanine
   "421310217", //soñao
   "80274812", //Vuelves a Empezar
 ];
@@ -34,11 +34,12 @@ const addAlbumHomepage = function () {
 
         div.innerHTML = `
              
-              <div class="card alburm-card bg-dark h-75 ">
-                <img src="${arrayOfAlbum.cover_small}" class="card-img-top flex-grow-1 imgAlbum" alt="..."  />
-                <div class="card-body p-0 py-1">
-                  <h5 class="card-title text-white pt-3" id="ciao">${arrayOfAlbum.title}</h5>
-                  <p class="card-text text-white-50 p-0 mt-3 ">${arrayOfAlbum.artist.name}</p>
+              <div class="card alburm-card bg-dark h-100 ">
+                <img src="${arrayOfAlbum.cover_medium}" class="card-img-top flex-grow-1 imgAlbum p-2 object-fit-cover rounded-3" alt="Cover Album"  />
+                 <div class="card-body p-0 py-1 ">
+                  <h5 class="card-title text-white pt-3 mb-4" >${arrayOfAlbum.title}</h5>
+                  <p class="card-text text-white-50 p-0 mt-2 position-absolute bottom-0 ">${arrayOfAlbum.artist.name}</p>
+                 </div>
                 </div>
               
             
