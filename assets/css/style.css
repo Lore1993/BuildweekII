@@ -28,3 +28,7 @@ body {
     rgba(48, 48, 48, 1) 100%
   );
 }
+
+.maxWidth {
+  width: 200px !important;
+}
