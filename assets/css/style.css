@@ -16,8 +16,8 @@ body {
 }
 
 .imgAlbum {
-  width: 180px;
-  height: 180px;
+  width: fit-content;
+  
 }
 
 .bg-div-centrale {

@@ -33,16 +33,16 @@ const addAlbumHomepage = function () {
         const div = document.createElement("div");
 
         div.innerHTML = `
-              <div class="card alburm-card bg-dark maxWidth mx-auto my-2">
-                <img src="${arrayOfAlbum.cover_medium}" class="card-img-top flex-grow-1 imgAlbum p-2 object-fit-cover rounded-3 img-fluid" alt="Cover Album"  />
-                 <div class="card-body p-0 py-1 ">
-                  <h5 class="card-title text-white pt-3 mb-4" >${arrayOfAlbum.title}</h5>
-                  <p class="card-text text-white-50 p-0 mt-2 position-absolute bottom-0 ">${arrayOfAlbum.artist.name}</p>
-                 </div>
-                </div>
+              <div class="card bg-dark mx-auto my-2 h-100">
+              <img src="${arrayOfAlbum.cover_medium}" class="card-img-top imgAlbum p-2 object-fit-cover rounded-3 img-fluid" alt="Cover Album" />
+              <div class="card-body p-2 position-relative">
+                <h5 class="card-title text-white mb-4">${arrayOfAlbum.title}</h5>
+                <p class="card-text text-white-50 position-absolute bottom-0">${arrayOfAlbum.artist.name}</p>
+              </div>
+            </div>
                
             `;
-        div.className = "col col-12 col-sm-6 col-md-4 col-lg-2 mx-auto";
+        div.className = "col col-12 col-sm-6 col-md-6 col-lg-3 mx-auto";
         rowAlbum.appendChild(div);
       })
 
