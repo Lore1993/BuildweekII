@@ -59,3 +59,9 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #dedede;
 }
+.buttoncolor {
+  background-color: #363639 !important;
+}
+.buttonplay {
+  background-color: #1ed760 !important;
+}
