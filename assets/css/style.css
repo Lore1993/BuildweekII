@@ -17,7 +17,6 @@ body {
 
 .imgAlbum {
   width: fit-content;
-  
 }
 
 .bg-div-centrale {
@@ -31,4 +30,26 @@ body {
 
 .maxWidth {
   width: 200px !important;
+  height: 100px;
+}
+
+/* SCROLLBAR */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 252, 252, 0.388);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #dedede;
 }
