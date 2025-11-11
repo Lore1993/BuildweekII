@@ -9,3 +9,59 @@
 body {
   font-family: "Circular";
 }
+
+.hover-white:hover {
+  color: white !important; /* testo bianco /
+  transition: color 0.3s ease;     / effetto fluido */
+}
+
+.hover-black:hover {
+  background-color: dimgrey !important;
+  color: white !important; /* testo bianco /
+  transition: color 0.3s ease;     / effetto fluido */
+}
+
+.imgAlbum {
+  width: fit-content;
+}
+
+.bg-div-centrale {
+  background: #000000;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(48, 48, 48, 1) 100%
+  );
+}
+
+.maxWidth {
+  width: 200px !important;
+  height: 100px;
+}
+
+/* SCROLLBAR */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 252, 252, 0.388);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #dedede;
+}
+.buttoncolor {
+  background-color: #363639 !important;
+}
+.buttonplay {
+  background-color: #1ed760 !important;
+}
