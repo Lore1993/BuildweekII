@@ -65,3 +65,22 @@ body {
 .buttonplay {
   background-color: #1ed760 !important;
 }
+
+.btnPlay {
+  background: var(--accent-color);
+  border: none;
+  color: black;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(29, 185, 84, 0.18);
+}
+
+#pic {
+  width: 25px !important;
+  height: 25px !important;
+}

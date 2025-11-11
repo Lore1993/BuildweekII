@@ -1,9 +1,3 @@
-const idAlbum1 = "230935602";
-const idAlbum2 = "46787432";
-const idAlbum3 = "568120942";
-const idAlbum4 = "399123947";
-const idAlbum5 = "80274812";
-
 const arrayIdAlbum = [
   "245956", //La voce del padrone
   "46787432", //17
@@ -34,10 +28,10 @@ const addAlbumHomepage = function () {
 
         div.innerHTML = `
               <div class="card bg-dark mx-auto my-2 h-100">
-              <a href="./albumpage.html?albumId=${arrayOfAlbum.id}" class="text-decoration-none "><img src="${arrayOfAlbum.cover_medium}" class="card-img-top imgAlbum p-2 object-fit-cover rounded-3 img-fluid" alt="Cover Album" /></a>
+              <a href="./albumpage.html?albumId=${arrayOfAlbum.id}" class="text-decoration-none "><img src="${arrayOfAlbum.cover_medium}" class="card-img-top imgAlbum  object-fit-cover rounded-3 img-fluid " alt="Cover Album" /></a>
               <div class="card-body p-2 position-relative">
                <a href="./albumpage.html?albumId=${arrayOfAlbum.id}" class="text-decoration-none text-white"> <h5 class="card-title text-white mb-4" >${arrayOfAlbum.title}</h5></a>
-                <a href="./artistpage.html?artistId=${arrayOfAlbum.artist.id}" class="text-decoration-none text-white"><p class="card-text text-white-50 position-absolute bottom-0">${arrayOfAlbum.artist.name}</p></a>
+                <a href="./artistpage.html?artistId=${arrayOfAlbum.artist.id}" class="text-decoration-none text-white"><p class="card-text text-white-50 position-absolute bottom-0 fs-6">${arrayOfAlbum.artist.name}</p></a>
               </div>
             </div>
                
