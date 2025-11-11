@@ -6,7 +6,7 @@ const id = allTheParameters.get("albumId");
 console.log("ID", id);
 
 const getDetails = function () {
-  fetch(baseUrl + "46787432")
+  fetch(baseUrl + id)
     .then((res) => {
       if (res.ok) {
         return res.json();
