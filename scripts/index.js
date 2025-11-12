@@ -85,3 +85,55 @@ const showAlbum = function () {
     });
 };
 showAlbum();
+
+
+const arrayIdArtist = [9822974,180,612,12313080,869356
+];
+
+const baseUrlArtist = "https://striveschool-api.herokuapp.com/api/deezer/artist/";
+
+const showArtist = function () {
+  const rowArtist = document.getElementById("row-Artist")
+  arrayIdArtist.forEach((Id) =>{
+     fetch(baseUrlArtist + Id)
+    .then((res) => {
+      console.log("RESPONSE", res);
+      if (res.ok) {
+        return res.json();
+      } else {
+        throw new Error(
+          `Errore nella risposta ricevuta dal server: ${res.status}`
+        );
+      }
+    })   
+    .then((Artist) => {
+      rowArtist.innerHTML += `<div
+                class="col-6 col-md-2 text-center my-3 artist-card position-relative"
+              >
+                <img
+                  class="rounded-circle border border-1 w-100"
+                  src="${Artist.picture_medium}"
+                />
+                <button
+                  type="button"
+                  class="btn rounded-circle text-black play-btn buttonplay"
+                >
+                  <i class="bi bi-play-circle play-icon fs-5"></i>
+                </button>
+                <h5 class="mt-2 mb-1 text-start text-white artist-card">
+                 ${Artist.name}
+                </h5>
+                <small class="text-white-50 text-start d-block artist-card"
+                  >Artist</small
+                >
+              </div>`
+      
+    })
+
+    .catch((err) => {
+      console.log("PROBLEMA", err);
+    });
+  } )
+ 
+};
+showArtist ();
