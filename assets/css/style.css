@@ -84,3 +84,50 @@ body {
   width: 25px !important;
   height: 25px !important;
 }
+
+
+.artist-card h5,
+.artist-card small {
+  margin: 0 !important;
+  display: block !important;
+  text-align: left !important; 
+}
+
+.artist-card h5 {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+}
+
+.artist-card small {
+  color: #aaa !important;
+}
+
+
+.play-btn {
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+
+}
+
+.artist-card:hover .play-btn {
+  opacity: 1;
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+  
+}
+
+.artist-card {
+  position: relative;
+  transition: all 0.3s ease;
+  border-radius: 5%;
+}
+
+.artist-card:hover {
+  background-color: rgba(255, 255, 255, 0.15); 
+  cursor: pointer;
+  transform: scale(1.02);
+}
