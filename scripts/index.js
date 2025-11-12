@@ -110,19 +110,19 @@ const showArtist = function () {
       rowArtist.innerHTML += `<div
                 class="col-6 col-md-2 text-center my-3 artist-card position-relative"
               >
-                <img
+                <a href="./artistpage.html?artistId=${Artist.id}" class="text-decoration-none text-white"><img
                   class="rounded-circle border border-1 w-100"
                   src="${Artist.picture_medium}"
-                />
-                <button
+                /></a>
+                <a href="./artistpage.html?artistId=${Artist.id}" class="text-decoration-none text-white"><button
                   type="button"
                   class="btn rounded-circle text-black play-btn buttonplay"
                 >
                   <i class="bi bi-play-circle play-icon fs-5"></i>
-                </button>
-                <h5 class="mt-2 mb-1 text-start text-white artist-card">
+                </button></a>
+                <a href="./artistpage.html?artistId=${Artist.id}" class="text-decoration-none text-white"><h5 class="mt-2 mb-1 text-start text-white artist-card">
                  ${Artist.name}
-                </h5>
+                </h5></a>
                 <small class="text-white-50 text-start d-block artist-card"
                   >Artist</small
                 >
