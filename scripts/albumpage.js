@@ -20,14 +20,41 @@ const getDetails = function () {
       const title = document.getElementById("albumTitle");
       const metaData = document.getElementById("metaData");
       const pic = document.getElementById("pic");
+      // richiamo la tabella da html
+      const tabella = document.getElementById("tabella");
       pic.src = album.artist.picture_small;
-      img.src = album.cover_medium;
+      img.src = album.cover_xl || album.cover_big || album.cover_medium;
       title.innerText = album.title;
       const autore = album.artist.name;
       const year = album.release_date.slice(0, 4);
       const brani = album.nb_tracks;
       const durataMinuti = Math.round((album.duration || 0) / 60);
       metaData.textContent = `${autore} • ${year} • ${brani} brani, ${durataMinuti} min`;
+      //aggiungo una riga vuota per distanziare la prima traccia dall'intestazione
+      tabella.innerHTML = ` <tr><td class="bg-transparent" colspan="4" style="height: 15px; border: none;"></td></tr>`;
+
+      //interpretazione forEach sottostrante:
+      //prendo i dati delle tracce negli album e li giro singolarmente
+      album.tracks.data.forEach((track, i) => {
+        tabella.innerHTML += `
+        <tr class="bg-transparent border-0">
+         <th scope="row" class="bg-transparent text-secondary text-center pt-3 border-0">${
+           i + 1
+         }</th>
+          <td class="bg-transparent text-white border-0">${
+            track.title
+          } <br> <span class="text-secondary">${track.artist.name}</span></td>
+          <td class="bg-transparent text-secondary border-0">${track.rank.toLocaleString(
+            "it-IT"
+          )}</td> 
+         <td class="bg-transparent text-secondary border-0">${formatDuration(
+           track.duration
+         )}</td>
+       </tr>
+        `;
+        // uso "toLocaleString('it-IT')" per formattare il rank tornato dall API
+        // quindi anzichè mostrare (123456789) mostro (123.456.789)
+      });
     })
     .catch((err) => {
       console.log("ERRORE NEL RECUPERO DETTAGLI", err);
@@ -35,3 +62,18 @@ const getDetails = function () {
 };
 
 getDetails();
+
+//questa funzione "parte" anche se dichiarato dopo la chiamata (riga 39) per via di com'è scritta
+// se l'avessimo scritta così: const formatDuration = (seconds) => { ... } dovevamo dichiararla prima di chiamarla
+// questo perchè le funzioni dichiarate come quella sottostante vengono caricate in memoria prima dell’esecuzione del codice
+function formatDuration(seconds) {
+  // assicuro che sia un numero intero
+  const totalSeconds = Math.floor(seconds);
+  const minutes = Math.floor(totalSeconds / 60);
+  const secs = totalSeconds % 60;
+
+  // se i secondi sono < 10, aggiunge uno zero davanti
+  const formatted = `${minutes}:${secs.toString().padStart(2, "0")}`;
+
+  return formatted;
+}
