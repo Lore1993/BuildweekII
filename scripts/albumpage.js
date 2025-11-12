@@ -33,6 +33,25 @@ const getDetails = function () {
       //aggiungo una riga vuota per distanziare la prima traccia dall'intestazione
       tabella.innerHTML = ` <tr><td class="bg-transparent" colspan="4" style="height: 15px; border: none;"></td></tr>`;
 
+      // prova
+      const colorRGB = [];
+      const colorThief = new ColorThief();
+      const divColor = document.getElementById("background-color");
+      const rgbToHex = (r, g, b) =>
+        "#" +
+        [r, g, b]
+          .map((x) => {
+            const hex = x.toString(16);
+            return hex.length === 1 ? "0" + hex : hex;
+          })
+          .join(""); //#023003
+      img.onload = () => {
+        const color = colorThief.getColor(img); // [r,g,b] [23,45,67]
+        console.log("rgb", color);
+
+        divColor.style.backgroundColor = rgbToHex(color[0], color[1], color[2]);
+      };
+
       //interpretazione forEach sottostrante:
       //prendo i dati delle tracce negli album e li giro singolarmente
       album.tracks.data.forEach((track, i) => {
