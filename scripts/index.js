@@ -27,9 +27,9 @@ const addAlbumHomepage = function () {
         const div = document.createElement("div");
 
         div.innerHTML = `
-              <div class="card bg-dark mx-auto my-2 h-100">
+              <div class="card bg-dark mx-auto my-2 h-100 artist-card">
               <a href="./albumpage.html?albumId=${arrayOfAlbum.id}" class="text-decoration-none "><img src="${arrayOfAlbum.cover_medium}" class="card-img-top imgAlbum  object-fit-cover rounded-3 img-fluid " alt="Cover Album" /></a>
-              <div class="card-body p-2 position-relative">
+              <div class="card-body p-2 position-relative artist-card">
                <a href="./albumpage.html?albumId=${arrayOfAlbum.id}" class="text-decoration-none text-white"> <h5 class="card-title text-white mb-4" >${arrayOfAlbum.title}</h5></a>
                 <a href="./artistpage.html?artistId=${arrayOfAlbum.artist.id}" class="text-decoration-none text-white"><p class="card-text text-white-50 position-absolute bottom-0 fs-6">${arrayOfAlbum.artist.name}</p></a>
               </div>
@@ -120,10 +120,10 @@ const showArtist = function () {
                 >
                   <i class="bi bi-play-circle play-icon fs-5"></i>
                 </button></a>
-                <a href="./artistpage.html?artistId=${Artist.id}" class="text-decoration-none text-white"><h5 class="mt-2 mb-1 text-start text-white artist-card">
+                <a href="./artistpage.html?artistId=${Artist.id}" class="text-decoration-none text-white"><h5 class="mt-2 mb-1 text-start text-white">
                  ${Artist.name}
                 </h5></a>
-                <small class="text-white-50 text-start d-block artist-card"
+                <small class="text-white-50 text-start d-block"
                   >Artist</small
                 >
               </div>`
