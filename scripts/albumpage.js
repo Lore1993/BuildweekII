@@ -50,7 +50,9 @@ const getDetails = function () {
         const color = colorThief.getColor(img); // [r,g,b] [23,45,67]
         console.log("rgb", color);
 
-        divColor.style.backgroundColor = rgbToHex(color[0], color[1], color[2]);
+        // divColor.style.backgroundColor = rgbToHex(color[0], color[1], color[2])
+        divColor.style.backgroundImage = `linear-gradient(0deg,rgba(0, 0, 0, 1) 0%, rgba(${color[0]}, ${color[1]}, ${color[2]}, 1) 100%)`;
+        // background: linear-gradient(0deg,rgba(0, 0, 0, 1) 0%, rgba(253, 187, 45, 1) 100%);
       };
 
       //interpretazione forEach sottostrante:
