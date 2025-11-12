@@ -29,7 +29,8 @@ const getDetails = function () {
       const year = album.release_date.slice(0, 4);
       const brani = album.nb_tracks;
       const durataMinuti = Math.round((album.duration || 0) / 60);
-      metaData.textContent = `${autore} • ${year} • ${brani} brani, ${durataMinuti} min`;
+      metaData.innerHTML = ` <a href="./artistpage.html?artistId=${album.artist.id}" class="text-decoration-none text-white">${autore}</a> • ${year} • ${brani} brani, ${durataMinuti} min`;
+
       //aggiungo una riga vuota per distanziare la prima traccia dall'intestazione
       tabella.innerHTML = ` <tr><td class="bg-transparent" colspan="4" style="height: 15px; border: none;"></td></tr>`;
 
@@ -62,7 +63,11 @@ const getDetails = function () {
          }</th>
           <td class="bg-transparent text-white border-0">${
             track.title
-          } <br> <span class="text-secondary">${track.artist.name}</span></td>
+          } <br> <a href="./artistpage.html?artistId=${
+          track.artist.id
+        }" class="text-secondary text-decoration-none">${
+          track.artist.name
+        }</a></td>
           <td class="bg-transparent text-secondary border-0">${track.rank.toLocaleString(
             "it-IT"
           )}</td> 
