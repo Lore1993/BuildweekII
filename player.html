@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Search Page</title>
+    <title>Home Page</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -35,7 +35,7 @@
                 <p class="d-inline ms-2">Home</p></a
               >
               <a
-                href="#"
+                href="./searchpage.html"
                 class="d-block my-0 text-secondary text-decoration-none"
                 ><i class="bi bi-search"></i>
                 <p class="d-inline ms-2">Cerca</p>
@@ -133,7 +133,6 @@
             class="flex-row gap-2 justify-content-between mb-2 d-none d-md-flex"
           >
             <div class="align-self-center">
-              <!-- PULSANTI AVANTI ED INDIETRO BROWSER -->
               <button
                 onclick="history.back()"
                 class="my-0 text-secondary text-decoration-none border-1 bg-black opacity-50 rounded-circle text-white"
@@ -169,35 +168,90 @@
               </ul>
             </div>
           </div>
-          <!-- fine lidia -->
-          <!-- inizio barra di ricerca -->
-          <div class="w-100">
-            <nav class="navbar navbar-light bg-transparent mt-5">
-              <div class="container-fluid justify-content-center">
-                <form class="d-flex w-75" id="form">
-                  <div class="input-group">
-                    <button
-                      class="input-group-text bg-secondary border-0 btn buttonplay text-black"
-                      type="submit"
-                      id="btn-search"
+          <div class="gradient d-none d-md-flex">
+            <div class="card mb-3 gradient text-white pb-3 border-0">
+              <div class="row g-0">
+                <div class="col-md-3">
+                  <a href="#" id="linkAlbumImg" class="text-decoration-none"
+                    ><img
+                      src=""
+                      class="img-fluid rounded-1 ms-3 mt-3"
+                      alt="albumCover"
+                      id="cover"
+                  /></a>
+                </div>
+                <div class="col-md-6">
+                  <div class="card-body ms-3">
+                    <p class="card-text">ALBUM</p>
+                    <a
+                      href="#"
+                      id="linkAlbumTitle"
+                      class="text-decoration-none text-white"
                     >
-                      <i class="bi bi-search"></i>
-                    </button>
-                    <input
-                      class="form-control me-2 opacity-50 text-black"
-                      type="search"
-                      placeholder="Cosa vuoi ascoltare"
-                      aria-label="Search"
-                      id="inputSearch"
-                    />
+                      <h1 class="card-title" id="songTitle">Titolo</h1></a
+                    >
+                    <a
+                      href="#"
+                      id="linkAuthor"
+                      class="text-decoration-none text-white"
+                      ><p class="card-text" id="author"></p
+                    ></a>
+                    <p class="card-text mt-2">
+                      <small class="text-white-50" id="description"></small>
+                    </p>
                   </div>
-                </form>
+                  <div class="container mt-5">
+                    <button class="rounded-pill buttonplay px-4 py-2 ms-4 me-3">
+                      Play
+                    </button>
+                    <button
+                      class="rounded-pill px-4 py-2 border-white bg-transparent text-white"
+                    >
+                      Salva
+                    </button>
+
+                    <i class="bi bi-three-dots ms-3 text-secondary fs-3"></i>
+                  </div>
+                </div>
+
+                <div class="col-md-3 text-center">
+                  <button
+                    class="rounded-pill opacity-75 border-0 buttoncolor mt-3"
+                  >
+                    <small class="text-secondary">Nascondi annunci</small>
+                  </button>
+                </div>
               </div>
-            </nav>
+            </div>
           </div>
-          <!-- fine barra di ricerca -->
+          <!-- CONTAINER BUONASERA + PLAYLIST -->
+          <div class="d-flex justify-content-between my-3">
+            <p class="d-inline fs-3 align-self-center m-0">
+              I tuoi artisti preferiti
+            </p>
+          </div>
           <div class="container">
-            <div class="row" id="row-card"></div>
+            <div class="row justify-content-around" id="row-Artist"></div>
+          </div>
+
+          <!-- Altro di ciò che ti piace -->
+          <div class="d-flex justify-content-between my-3">
+            <p class="d-inline fs-3 align-self-center m-0">
+              Altro di ciò che ti piace
+            </p>
+            <div class="d-flex">
+              <a
+                href="#"
+                class="text-decoration-none text-white-50 align-self-center"
+                >Visualizza tutto</a
+              >
+            </div>
+          </div>
+
+          <div class="container justify-content-center">
+            <div class="row g-4" id="rowAlbum">
+              <!-- album  -->
+            </div>
           </div>
         </div>
         <!-- AMICI -->
@@ -357,8 +411,85 @@
           </div>
         </div>
       </div>
+      <!-- PLAYER MUSICALE!!!!!!!!!!!!!!! -->
+      <div class="bg-dark fixed-bottom flex-column">
+        <div class="container-fluid d-none d-md-flex">
+          <div class="flex-row row text-white w-100">
+            <!-- COLONNA 1 -->
+            <div class="col col-3 text-start align-self-center mt-3">
+              <div class="card mb-3 bg-transparent text-white border-0">
+                <div class="row g-0">
+                  <div class="col-md-2">
+                    <img
+                      src=""
+                      class="img-fluid rounded-2 object-fit-cover"
+                      alt="album pic"
+                      id="album-pic"
+                    />
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body py-0 ps-2">
+                      <h5
+                        class="card-title m-0 text-white"
+                        id="title-track"
+                      ></h5>
+                      <p
+                        class="card-text text-white-50 m-0"
+                        id="artist-name"
+                      ></p>
+                      <i class="bi bi-suit-heart"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- FINE COLONNA 1 -->
+            <!-- COLONNA 2 CENTRALE -->
+            <div class="col col-6 text-center mt-3">
+              <div class="col d-flex gap-5 justify-content-center">
+                <p class="d-inline">
+                  <i class="bi bi-shuffle text-success"></i>
+                </p>
+                <p class="d-inline">
+                  <i class="bi bi-skip-backward-fill"></i>
+                </p>
+                <p class="d-inline">
+                  <i class="bi bi-play-circle-fill text-white"></i>
+                </p>
+                <p class="d-inline">
+                  <i class="bi bi-skip-forward-fill"></i>
+                </p>
+                <p class="d-inline">
+                  <i class="bi bi-repeat text-success"></i>
+                </p>
+              </div>
+              <div class="col">
+                <span id="current-time" class="small d-inline m-0">ciao</span>
+
+                <input
+                  type="range"
+                  class="form-range d-inline w-75"
+                  min="0"
+                  value="0"
+                  step="1"
+                />
+                <span id="total-duration" class="small d-inline m-0"
+                  >ciao 2</span
+                >
+              </div>
+            </div>
+            <!-- FINE COLONNA 2 -->
+            <!-- COLONNA 3 -->
+            <div class="col col-3 text-end align-self-center mt-3">
+              <p class="m-0">colonna 3</p>
+            </div>
+            <!-- FINE COLONNA 3 -->
+          </div>
+        </div>
+      </div>
+      <!-- FINE PLAYER -->
     </main>
-    <script src="./scripts/searchpage.js"></script>
+    <script src="./scripts/index.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"

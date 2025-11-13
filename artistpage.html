@@ -152,16 +152,19 @@
               <!-- Frecce + utente (lidia) -->
               <div class="d-flex flex-row gap-2 justify-content-between mb-2">
                 <div class="align-self-center">
-                  <a
-                    href="./index.html"
-                    class="my-0 text-secondary text-decoration-none border-1 bg-black opacity-50 rounded-circle p-1 text-white"
-                    ><i class="bi bi-chevron-left"></i
-                  ></a>
-                  <a
-                    href="#"
-                    class="my-0 text-secondary text-decoration-none border-1 bg-black opacity-50 rounded-circle p-1 text-white"
-                    ><i class="bi bi-chevron-right"></i
-                  ></a>
+                  <button
+                    onclick="history.back()"
+                    class="my-0 text-secondary text-decoration-none border-1 bg-black opacity-50 rounded-circle text-white"
+                  >
+                    <i class="bi bi-chevron-left"></i>
+                  </button>
+
+                  <button
+                    onclick="history.forward()"
+                    class="my-0 text-secondary text-decoration-none border-1 bg-black opacity-50 rounded-circle text-white"
+                  >
+                    <i class="bi bi-chevron-right"></i>
+                  </button>
                 </div>
                 <div
                   class="btn rounded-pill bg-black py-1 px-2 dropdown-toggle active border-0"
