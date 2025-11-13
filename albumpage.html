@@ -234,7 +234,7 @@
           </div>
           <!-- FINE PULSANTI -->
           <!-- INIZIO LISTA TRACK TABELLA -->
-          <table class="table">
+          <table class="table" id="tabella-principale">
             <thead>
               <tr>
                 <th class="bg-transparent text-secondary" scope="col">#</th>
@@ -419,6 +419,108 @@
           </div>
         </div>
       </div>
+      <!-- PLAYER MUSICALE!!!!!!!!!!!!!!! -->
+      <div class="bg-dark fixed-bottom flex-column">
+        <div class="container-fluid d-none d-md-flex">
+          <div class="flex-row row text-white w-100">
+            <!-- COLONNA 1 -->
+            <div class="col col-3 text-start align-self-center mt-3">
+              <div class="card mb-3 bg-transparent text-white border-0">
+                <div class="row g-0">
+                  <div class="col-md-2">
+                    <!-- ID album-pic per l'img dell'album -->
+                    <img
+                      src=""
+                      class="img-fluid rounded-2 object-fit-cover"
+                      alt="album pic"
+                      id="album-pic"
+                    />
+                  </div>
+                  <div class="col-md-8">
+                    <!-- ID title-track per il titolo della canzone -->
+                    <div class="card-body py-0 ps-2">
+                      <h5
+                        class="card-title m-0 text-white"
+                        id="title-track"
+                      ></h5>
+                      <!-- ID artist-name per il nome dell'artista -->
+                      <p
+                        class="card-text text-white-50 m-0"
+                        id="artist-name"
+                      ></p>
+                      <i class="bi bi-suit-heart"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- FINE COLONNA 1 -->
+            <!-- COLONNA 2 CENTRALE -->
+            <div class="col col-6 text-center mt-3">
+              <div class="col d-flex gap-5 justify-content-center">
+                <p class="d-inline mb-0 fs-4">
+                  <i class="bi bi-shuffle text-success"></i>
+                </p>
+                <p class="d-inline mb-0 fs-4" id="backward">
+                  <i class="bi bi-skip-backward-fill"></i>
+                </p>
+                <!-- ICONA PLAY ID play-->
+                <p class="d-inline mb-0 fs-4" id="play">
+                  <i class="bi bi-play-circle-fill text-white"></i>
+                </p>
+                <!-- ICONA PAUSE ID pause (scambiare d-inline e d-none)-->
+                <p class="mb-0 fs-4 d-none" id="pause">
+                  <i class="bi bi-pause-circle-fill"></i>
+                </p>
+
+                <p class="d-inline mb-0 fs-4" id="forward">
+                  <i class="bi bi-skip-forward-fill"></i>
+                </p>
+                <p class="d-inline mb-0 fs-4">
+                  <i class="bi bi-repeat text-success"></i>
+                </p>
+              </div>
+              <div class="col">
+                <!-- ID current-time per il tempo trascorso -->
+                <span id="current-time" class="small d-inline m-0"></span>
+                <!-- ID  player per l'input range per ascoltare le canzoni -->
+                <input
+                  type="range"
+                  id="player"
+                  class="bg-secondary text-white d-inline w-75"
+                  min="0"
+                  value="0"
+                  step="1"
+                />
+                <!-- ID total-duration per la durata della traccia -->
+                <span id="total-duration" class="small d-inline m-0"></span>
+              </div>
+            </div>
+            <!-- FINE COLONNA 2 -->
+            <!-- COLONNA 3 -->
+            <div class="col col-3 text-end align-self-center mt-3">
+              <p class="d-inline mb-0"><i class="bi bi-mic"></i></p>
+              <p class="d-inline mb-0"><i class="bi bi-border-width"></i></p>
+              <p class="d-inline mb-0"><i class="bi bi-speaker"></i></p>
+              <p class="d-inline mb-0"><i class="bi bi-volume-up fs-5"></i></p>
+              <!-- INPUT RANGE PER IL VOLUME ID volume -->
+              <input
+                type="range"
+                class="bg-secondary text-white d-inline w-25"
+                min="0"
+                value="0"
+                step="1"
+                id="volume"
+              />
+              <p class="d-inline mb-0">
+                <i class="bi bi-arrows-angle-expand"></i>
+              </p>
+            </div>
+            <!-- FINE COLONNA 3 -->
+          </div>
+        </div>
+      </div>
+      <!-- FINE PLAYER -->
     </main>
     <script src="./scripts/albumpage.js"></script>
     <script

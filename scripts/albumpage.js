@@ -4,6 +4,7 @@ console.log(url);
 const allTheParameters = new URLSearchParams(url);
 const id = allTheParameters.get("albumId");
 console.log("ID", id);
+const tabellaPrinci = document.getElementById("tabella-principale");
 
 const getDetails = function () {
   fetch(baseUrl + id)
@@ -59,15 +60,17 @@ const getDetails = function () {
       //prendo i dati delle tracce negli album e li giro singolarmente
       album.tracks.data.forEach((track, i) => {
         tabella.innerHTML += `
-        <tr class="bg-transparent border-0">
+        <tr class="bg-transparent border-0" data-index="${i}">
          <th scope="row" class="bg-transparent text-secondary text-center pt-3 border-0">${
            i + 1
          }</th>
-          <td class="bg-transparent text-white border-0">${
-            track.title
-          } <br> <a href="./artistpage.html?artistId=${
-          track.artist.id
-        }" class="text-secondary text-decoration-none">${
+            <td class="bg-transparent text-white border-0"> <a href="./albumpage.html?albumId=${
+              track.album.id
+            }&trackId=${track.id}" class="text-white text-decoration-none">
+             ${track.title}
+            </a><br> <a href="./artistpage.html?artistId=${
+              track.artist.id
+            }" class="text-secondary text-decoration-none">${
           track.artist.name
         }</a></td>
           <td class="bg-transparent text-secondary border-0">${track.rank.toLocaleString(
@@ -103,3 +106,127 @@ function formatDuration(seconds) {
 
   return formatted;
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  // CONFIG
+  const ALBUM_ID =
+    new URLSearchParams(location.search).get("albumId") || "75621062";
+  const API = `https://striveschool-api.herokuapp.com/api/deezer/album/${ALBUM_ID}`;
+
+  // DOM elementi player UI
+  const tabella = document.getElementById("tabella");
+  const albumPic = document.getElementById("album-pic");
+  const titleTrack = document.getElementById("title-track");
+  const artistName = document.getElementById("artist-name");
+
+  const playBtnWrapper = document.getElementById("play"); // elemento che contiene l'icona play
+  const pauseBtnWrapper = document.getElementById("pause"); // elemento che contiene l'icona pause
+  const prevBtn =
+    document.querySelector(".bi-skip-backward-fill")?.closest("p") || null;
+  const nextBtn =
+    document.querySelector(".bi-skip-forward-fill")?.closest("p") || null;
+
+  const progressInput = document.getElementById("player"); // input range per progresso
+  const currentTimeEl = document.getElementById("current-time");
+  const totalDurationEl = document.getElementById("total-duration");
+  const volumeInput = document.getElementById("volume");
+
+  // AUDIO
+  const audio = new Audio();
+
+  // stato
+  let albumData = null;
+  let currentIndex = null;
+  let isPlaying = false;
+
+  // util
+  function formatTime(sec) {
+    sec = Math.floor(Number(sec) || 0);
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return `${m}:${s.toString().padStart(2, "0")}`;
+  }
+
+  // FETCH album e render tracks
+  fetch(API)
+    .then((r) => {
+      if (!r.ok) throw new Error("Errore caricamento album");
+      return r.json();
+    })
+    .then((album) => {
+      albumData = album;
+      albumPic.src = album.cover_small || coverUrl;
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+
+  // PLAY TRACK by index
+  function playTrack(index) {
+    if (!albumData) return;
+    const tracks = albumData.tracks?.data || [];
+    const track = tracks[index];
+    if (!track) return;
+
+    if (!track.preview) {
+      alert("Anteprima non disponibile per questa traccia.");
+      return;
+    }
+
+    currentIndex = index;
+    // imposta audio
+    audio.src = track.preview;
+    audio.currentTime = 0;
+    audio.play().catch((e) => console.warn("Play fallito", e));
+
+    // aggiorna barra player (left area)
+    albumPic.src = albumData.cover_small || albumData.cover_medium || "";
+    titleTrack.textContent = track.title;
+    artistName.textContent = track.artist?.name || "";
+
+    // toggle icone play/pause
+    playBtnWrapper.classList.add("d-none");
+    pauseBtnWrapper.classList.remove("d-none");
+    isPlaying = true;
+
+    // imposta durata massima del range (preview spesso 30s)
+    const expectedDur = track.duration || 30;
+    progressInput.max = Math.floor(expectedDur);
+    totalDurationEl.textContent = formatTime(expectedDur);
+  }
+
+  // EVENTS
+
+  // click su tabella -> play selected
+  tabella.addEventListener("click", (e) => {
+    const row = e.target.closest("tr[data-index]");
+    if (!row) return;
+    const index = Number(row.dataset.index);
+    playTrack(index);
+  });
+
+  // PAUSE track   NON FUNZIONA!!!!!!!!!!!!!
+  function pauseTrack() {
+    audio.pause();
+    playBtnWrapper.classList.remove("d-none");
+    pauseBtnWrapper.classList.add("d-none");
+    isPlaying = false;
+  }
+
+  // VOLUME: mappa valore input -> audio.volume (0..1)
+  function setVolumeFromInput() {
+    if (!volumeInput) return;
+    const val = Number(volumeInput.value || 0);
+    const max = Number(volumeInput.max || 100);
+    // se max è 1, usalo direttamente; altrimenti normalizza
+    audio.volume = max === 1 ? val : val / max;
+  }
+  // inizializza: se l'HTML ha value=0 e max vuoto, impostiamolo a 100 per UX
+  if (volumeInput) {
+    if (!volumeInput.max || Number(volumeInput.max) === 0)
+      volumeInput.max = 100;
+    if (!volumeInput.value) volumeInput.value = 100;
+    setVolumeFromInput();
+    volumeInput.addEventListener("input", setVolumeFromInput);
+  }
+});
