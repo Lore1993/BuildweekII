@@ -426,7 +426,7 @@
                   </div>
                   <div class="col-md-8">
                     <!-- ID title-track per il titolo della canzone -->
-                    <div class="card-body py-0 ps-2">
+                    <div class="card-body py-0 ps-2 pe-0">
                       <h5
                         class="card-title m-0 text-white"
                         id="title-track"
@@ -436,8 +436,10 @@
                         class="card-text text-white-50 m-0"
                         id="artist-name"
                       ></p>
-                      <i class="bi bi-suit-heart"></i>
                     </div>
+                  </div>
+                  <div class="col-md-2">
+                    <i class="bi bi-suit-heart"></i>
                   </div>
                 </div>
               </div>
@@ -453,9 +455,13 @@
                   <i class="bi bi-skip-backward-fill"></i>
                 </p>
                 <!-- ICONA PLAY ID play-->
-                <p class="d-inline mb-0 fs-4" id="play">
+                <button
+                  onclick="play()"
+                  class="d-inline mb-0 fs-4 bg-transparent border-0"
+                  id="play"
+                >
                   <i class="bi bi-play-circle-fill text-white"></i>
-                </p>
+                </button>
                 <!-- ICONA PAUSE ID pause (scambiare d-inline e d-none)-->
                 <p class="mb-0 fs-4 d-none" id="pause">
                   <i class="bi bi-pause-circle-fill"></i>
