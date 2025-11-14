@@ -110,6 +110,7 @@ function formatDuration(seconds) {
   return formatted;
 }
 
+// DA QUI IN POI SI TRATTA DEL PLAYER
 document.addEventListener("DOMContentLoaded", () => {
   // CONFIG
   const ALBUM_ID =
@@ -139,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentIndex = null;
   let isPlaying = false;
 
-  // util
+  // util -- Molto simile (se non lo stesso) a formatDuration.
   function formatTime(sec) {
     sec = Math.floor(Number(sec) || 0);
     const m = Math.floor(sec / 60);
@@ -288,5 +289,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // Funzionamento per PREV track
   prevBtn.addEventListener("click", () => {
     prevTrack();
+  });
+
+  // aggiorna progress mentre l'audio suona
+  audio.addEventListener("timeupdate", () => {
+    const t = Math.floor(audio.currentTime || 0);
+    progressInput.value = t;
+    currentTimeEl.textContent = formatTime(t);
+  });
+
+  // cercare di cambiare posizione con la barra --> attenzione! la durata della canzone è di 30s, pur se c'è scritto che dura di più. Ciò avviene perchè nella nostra API abbiamo solo preview dalla durata di 30s, ma una chiave "duration" dove viene indicata la durata totale della canzone per intero.
+  progressInput.addEventListener("input", () => {
+    // mapping semplice: set audio.currentTime alla posizione del range
+    audio.currentTime = Number(progressInput.value);
   });
 });
