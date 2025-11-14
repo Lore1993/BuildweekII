@@ -100,3 +100,17 @@ function formatDuration(seconds) {
 
   return formatted
 }
+
+const follow = function (e) {
+  const isFollowing = e.innerText === "Segui"
+
+  if (isFollowing) {
+    e.innerText = "Segui già"
+    e.classList.remove("text-white")
+    e.classList.add("text-primary")
+  } else {
+    e.innerText = "Segui"
+    e.classList.remove("text-primary")
+    e.classList.add("text-white")
+  }
+}
