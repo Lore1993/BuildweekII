@@ -4,6 +4,11 @@ const arrayIdAlbum = [
   "301773", //Mezzanine
   "421310217", //soñao
   "80274812", //Vuelves a Empezar
+  "124656562",
+  "15762534",
+  "153406392",
+  "1434890",
+  "851013072",
 ];
 
 const baseUrl = "https://striveschool-api.herokuapp.com/api/deezer/album/";
@@ -88,7 +93,7 @@ const showAlbum = function () {
 };
 showAlbum();
 
-const arrayIdArtist = [9822974, 180, 612, 12313080, 869356];
+const arrayIdArtist = [9822974, 180, 612, 12313080, 869356, 69820, 458, 554792, 266506, 927];
 
 const baseUrlArtist =
   "https://striveschool-api.herokuapp.com/api/deezer/artist/";

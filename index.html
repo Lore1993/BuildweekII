@@ -223,6 +223,12 @@
 
                 <div class="col-md-3 text-center">
                   <button
+                    onclick="showAlbum()"
+                    class="bg-light rounded-circle text-black"
+                  >
+                    <i class="bi bi-caret-right"></i>
+                  </button>
+                  <button
                     class="rounded-pill opacity-75 border-0 buttoncolor mt-3"
                   >
                     <small class="text-secondary">Nascondi annunci</small>
@@ -236,6 +242,14 @@
             <p class="d-inline fs-3 align-self-center m-0">
               I tuoi artisti preferiti
             </p>
+            <div class="d-flex">
+              <button
+                onclick="showArtist()"
+                class="text-decoration-none text-white-50 align-self-center"
+              >
+                Visualizza altro
+              </button>
+            </div>
           </div>
           <div class="container">
             <div class="row justify-content-around" id="row-Artist"></div>
@@ -247,11 +261,12 @@
               Altro di ciò che ti piace
             </p>
             <div class="d-flex">
-              <a
-                href="#"
+              <button
+                onclick="addAlbumHomepage()"
                 class="text-decoration-none text-white-50 align-self-center"
-                >Visualizza tutto</a
               >
+                Visualizza altro
+              </button>
             </div>
           </div>
 
