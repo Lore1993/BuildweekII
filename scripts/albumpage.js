@@ -276,19 +276,21 @@ document.addEventListener("DOMContentLoaded", () => {
     pauseTrack();
   });
 
+  // costante per volume di base (10%)
+  const defultVolume = 5;
   // VOLUME: mappa valore input -> audio.volume (0..1)
   function setVolumeFromInput() {
     if (!volumeInput) return;
-    const val = Number(volumeInput.value || 2);
+    const val = Number(volumeInput.value || defultVolume);
     const max = Number(volumeInput.max || 100);
-    // se max è 1, usalo direttamente; altrimenti normalizza
-    audio.volume = max === 1 ? val : val / max;
+    audio.volume = val / max;
   }
   // inizializza: se l'HTML ha value=0 e max vuoto, impostiamolo a 100 per UX
   if (volumeInput) {
     if (!volumeInput.max || Number(volumeInput.max) === 0)
       volumeInput.max = 100;
-    if (!volumeInput.value) volumeInput.value = 100;
+    if (!volumeInput.value || Number(volumeInput.value) === 0)
+      volumeInput.value = defultVolume;
     setVolumeFromInput();
     volumeInput.addEventListener("input", setVolumeFromInput);
   }
