@@ -245,4 +245,43 @@ document.addEventListener("DOMContentLoaded", () => {
     setVolumeFromInput();
     volumeInput.addEventListener("input", setVolumeFromInput);
   }
+
+  // NEXT
+  function nextTrack() {
+    if (!albumData) return;
+    const tracks = albumData.tracks?.data || [];
+    if (currentIndex === null) return;
+    if (currentIndex === null) currentIndex = 0;
+    const nextIndex = currentIndex + 1 < tracks.length ? currentIndex + 1 : 0;
+    //Controllo in che posizione dell'album mi trovo e controlla se esiste una traccia successiva.
+    // Esemoio: se abbiamo 10 tracce, nell'array avremmo indici da 0 a 9.
+    // Se siamo alla traccia 3 farà :  3 + 1 = 4 che è < 10 quindi ok.      MENTRE
+    // Se siami alla traccia 9 farà 9 + 1 = 10 che NON è < 10 quindi fine lista
+    //Qua allora usiamo operatore ternario e quindi:
+    // condizione ? valore-se-vero : valore-se-falso
+    // SE ESISTE una traccia dopo allora usa currentIndex + 1
+    // ALTRIMENTI (sei all’ultima) allora torna a 0 (ricomincia da capo)
+    playTrack(nextIndex);
+  }
+
+  //PREV
+  function prevTrack() {
+    if (!albumData) return;
+    const tracks = albumData.tracks?.data || [];
+    if (currentIndex === null) return;
+    if (currentIndex === null) currentIndex = 0;
+    const prevIndex =
+      currentIndex - 1 >= 0 ? currentIndex - 1 : tracks.length - 1; //vedi riga 266-273 per spiegazione funzionamento
+    playTrack(prevIndex);
+  }
+
+  // Funzionamento per NEXT track
+  nextBtn.addEventListener("click", () => {
+    nextTrack();
+  });
+
+  // Funzionamento per PREV track
+  prevBtn.addEventListener("click", () => {
+    prevTrack();
+  });
 });
