@@ -212,6 +212,10 @@ document.addEventListener("DOMContentLoaded", () => {
     pauseBtnWrapper.classList.add("d-none");
     isPlaying = false;
   }
+  // Funzionamento per PAUSE track
+  pauseBtnWrapper.addEventListener("click", () => {
+    pauseTrack();
+  });
 
   // VOLUME: mappa valore input -> audio.volume (0..1)
   function setVolumeFromInput() {
