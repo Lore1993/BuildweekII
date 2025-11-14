@@ -11,11 +11,21 @@ const arrayIdAlbum = [
   "851013072",
 ];
 
+function getRandomElements(arr, count) {
+  const shuffled = [...arr].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count);
+}
+
+let randomIds = [];
+
 const baseUrl = "https://striveschool-api.herokuapp.com/api/deezer/album/";
 
 const addAlbumHomepage = function () {
-  arrayIdAlbum.forEach((id) => {
-    console.log("aaa", baseUrl + id);
+  const rowAlbum = document.getElementById("rowAlbum");
+  const div = document.createElement("div");
+  rowAlbum.innerHTML = "";
+  randomIds = getRandomElements(arrayIdAlbum, 5);
+  randomIds.forEach((id) => {
     fetch(baseUrl + id)
       .then((res) => {
         console.log("RESPONSE", res);
@@ -93,14 +103,18 @@ const showAlbum = function () {
 };
 showAlbum();
 
-const arrayIdArtist = [9822974, 180, 612, 12313080, 869356, 69820, 458, 554792, 266506, 927];
+const arrayIdArtist = [
+  9822974, 180, 612, 12313080, 869356, 69820, 458, 554792, 266506, 927,
+];
 
 const baseUrlArtist =
   "https://striveschool-api.herokuapp.com/api/deezer/artist/";
 
 const showArtist = function () {
+  randomIds = getRandomElements(arrayIdArtist, 5);
   const rowArtist = document.getElementById("row-Artist");
-  arrayIdArtist.forEach((Id) => {
+  rowArtist.innerHTML = "";
+  randomIds.forEach((Id) => {
     fetch(baseUrlArtist + Id)
       .then((res) => {
         console.log("RESPONSE", res);
