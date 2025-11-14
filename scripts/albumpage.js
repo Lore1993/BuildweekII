@@ -163,6 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((album) => {
       albumData = album;
       albumPic.src = album.cover_small || coverUrl;
+      albumPicSmall.src = album.cover_small || coverUrl;
     })
     .catch((err) => {
       console.error(err);
