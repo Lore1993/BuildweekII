@@ -5,6 +5,7 @@ const allTheParameters = new URLSearchParams(url);
 const id = allTheParameters.get("albumId");
 console.log("ID", id);
 const tabellaPrinci = document.getElementById("tabella-principale");
+const cuore = document.getElementById("cuore");
 
 const getDetails = function () {
   fetch(baseUrl + id)
@@ -61,20 +62,20 @@ const getDetails = function () {
       album.tracks.data.forEach((track, i) => {
         tabella.innerHTML += `
         <tr class="bg-transparent border-0" data-index="${i}">
-         <th scope="row" class="bg-transparent text-secondary text-center pt-3 border-0">${
+         <th scope="row" class="bg-transparent text-secondary text-center pt-3 border-0" role="button">${
            i + 1
          }</th>
-            <td class="bg-transparent text-white border-0"> 
+            <td class="bg-transparent text-white border-0" role="button"> 
              ${track.title}
             <br> <a href="./artistpage.html?artistId=${
               track.artist.id
             }" class="text-secondary text-decoration-none">${
           track.artist.name
         }</a></td>
-          <td class="bg-transparent text-secondary border-0">${track.rank.toLocaleString(
+          <td class="bg-transparent text-secondary border-0" role="button">${track.rank.toLocaleString(
             "it-IT"
           )}</td> 
-         <td class="bg-transparent text-secondary border-0">${formatDuration(
+         <td class="bg-transparent text-secondary border-0" role="button">${formatDuration(
            track.duration
          )}</td>
        </tr>
@@ -89,6 +90,10 @@ const getDetails = function () {
 };
 
 getDetails();
+
+cuore.addEventListener("click", () => {
+  cuore.classList.toggle("text-danger");
+});
 
 //questa funzione "parte" anche se dichiarato dopo la chiamata (riga 39) per via di com'è scritta
 // se l'avessimo scritta così: const formatDuration = (seconds) => { ... } dovevamo dichiararla prima di chiamarla
