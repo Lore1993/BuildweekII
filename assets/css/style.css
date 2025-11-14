@@ -127,3 +127,8 @@ body {
   cursor: pointer;
   transform: scale(1.02);
 }
+
+/* pulsante barra */
+.player-btn {
+  cursor: pointer;
+}
