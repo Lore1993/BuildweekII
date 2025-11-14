@@ -121,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const albumPic = document.getElementById("album-pic");
   const titleTrack = document.getElementById("title-track");
   const artistName = document.getElementById("artist-name");
+  const playInAlto = document.getElementById("playInAlto");
 
   const playBtnWrapper = document.getElementById("play"); // elemento che contiene l'icona play
   const pauseBtnWrapper = document.getElementById("pause"); // elemento che contiene l'icona pause
@@ -196,6 +197,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // EVENTS
+
+  playInAlto.addEventListener("click", () => {
+    playTrack(0);
+  });
 
   // click su tabella -> play selected
   tabella.addEventListener("click", (e) => {
