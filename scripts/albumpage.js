@@ -277,7 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // costante per volume di base (10%)
-  const defultVolume = 5;
+  const defultVolume = 10;
   // VOLUME: mappa valore input -> audio.volume (0..1)
   function setVolumeFromInput() {
     if (!volumeInput) return;
