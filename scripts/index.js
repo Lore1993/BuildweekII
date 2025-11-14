@@ -22,7 +22,6 @@ const baseUrl = "https://striveschool-api.herokuapp.com/api/deezer/album/";
 
 const addAlbumHomepage = function () {
   const rowAlbum = document.getElementById("rowAlbum");
-  const div = document.createElement("div");
   rowAlbum.innerHTML = "";
   randomIds = getRandomElements(arrayIdAlbum, 5);
   randomIds.forEach((id) => {
@@ -38,9 +37,7 @@ const addAlbumHomepage = function () {
         }
       })
       .then((arrayOfAlbum) => {
-        const rowAlbum = document.getElementById("rowAlbum");
         const div = document.createElement("div");
-
         div.innerHTML = `
               <div class="card bg-dark mx-auto my-2 h-100 artist-card">
               <a href="./albumpage.html?albumId=${arrayOfAlbum.id}" class="text-decoration-none "><img src="${arrayOfAlbum.cover_medium}" class="card-img-top imgAlbum  object-fit-cover rounded-3 img-fluid " alt="Cover Album" /></a>
