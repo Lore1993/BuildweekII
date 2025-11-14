@@ -5,7 +5,7 @@ const allTheParameters = new URLSearchParams(url)
 const id = allTheParameters.get("albumId")
 console.log("ID", id)
 const tabellaPrinci = document.getElementById("tabella-principale")
-const cuore = document.getElementById("cuore")
+const cuore = document.getElementsByClassName("cuore")
 
 const getDetails = function () {
   fetch(baseUrl + id)
