@@ -64,11 +64,9 @@ const getDetails = function () {
          <th scope="row" class="bg-transparent text-secondary text-center pt-3 border-0">${
            i + 1
          }</th>
-            <td class="bg-transparent text-white border-0"> <a href="./albumpage.html?albumId=${
-              track.album.id
-            }&trackId=${track.id}" class="text-white text-decoration-none">
+            <td class="bg-transparent text-white border-0"> 
              ${track.title}
-            </a><br> <a href="./artistpage.html?artistId=${
+            <br> <a href="./artistpage.html?artistId=${
               track.artist.id
             }" class="text-secondary text-decoration-none">${
           track.artist.name
