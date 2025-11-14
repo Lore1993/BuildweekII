@@ -302,4 +302,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // mapping semplice: set audio.currentTime alla posizione del range
     audio.currentTime = Number(progressInput.value);
   });
+
+  // fine traccia -> comportamento: next
+  audio.addEventListener("ended", () => {
+    // ripristina icone
+    playBtnWrapper.classList.remove("d-none");
+    pauseBtnWrapper.classList.add("d-none");
+    isPlaying = false;
+    // passa alla traccia successiva
+    nextTrack();
+  });
 });
