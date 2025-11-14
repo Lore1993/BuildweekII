@@ -111,6 +111,12 @@ function formatDuration(seconds) {
 
 // DA QUI IN POI SI TRATTA DEL PLAYER
 document.addEventListener("DOMContentLoaded", () => {
+  // DOM elementi small player
+  const albumPicSmall = document.getElementById("album-pic-small");
+  const titleTrackSmall = document.getElementById("title-track-small");
+  const playBtnSmall = document.getElementById("play-small");
+  const pauseBtnSmall = document.getElementById("pause-small");
+
   // CONFIG
   const ALBUM_ID =
     new URLSearchParams(location.search).get("albumId") || "75621062";
@@ -181,11 +187,15 @@ document.addEventListener("DOMContentLoaded", () => {
     audio.play().catch((e) => console.warn("Play fallito", e));
 
     // aggiorna barra player (left area)
+    albumPicSmall.src = albumData.cover_small || albumData.cover_medium || "";
     albumPic.src = albumData.cover_small || albumData.cover_medium || "";
+    titleTrackSmall.textContent = track.title;
     titleTrack.textContent = track.title;
     artistName.textContent = track.artist?.name || "";
 
     // toggle icone play/pause
+    playBtnSmall.classList.add("d-none");
+    pauseBtnSmall.classList.remove("d-none");
     playBtnWrapper.classList.add("d-none");
     pauseBtnWrapper.classList.remove("d-none");
     isPlaying = true;
@@ -209,7 +219,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const index = Number(row.dataset.index);
     playTrack(index);
   });
+  // Player Mini
+  playBtnSmall.addEventListener("click", () => {
+    // se non c'è una traccia corrente, avvia la prima
+    if (currentIndex === null) {
+      // prova a trovare la prima traccia dell'album corrente, prende tutte le tracce, controlla che .lenght sia > 0 e fa partire la traccia
+      const tracks = albumData?.tracks?.data || [];
+      if (tracks.length > 0) {
+        playTrack(0);
+        return;
+      } else return;
+    }
+    // se abbiamo una canzone  caricato e in pausa -> play
+    audio.play().catch((e) => console.warn(e)); //faccio partire l'audio e aggiungo controllo errori
+    playBtnSmall.classList.add("d-none"); //cambio i pulsanti
+    pauseBtnSmall.classList.remove("d-none");
+    playBtnWrapper.classList.add("d-none"); //cambio i pulsanti
+    pauseBtnWrapper.classList.remove("d-none");
+    isPlaying = true;
+  });
 
+  // Player Normale
   playBtnWrapper.addEventListener("click", () => {
     // se non c'è una traccia corrente, avvia la prima
     if (currentIndex === null) {
@@ -224,6 +254,8 @@ document.addEventListener("DOMContentLoaded", () => {
     audio.play().catch((e) => console.warn(e)); //faccio partire l'audio e aggiungo controllo errori
     playBtnWrapper.classList.add("d-none"); //cambio i pulsanti
     pauseBtnWrapper.classList.remove("d-none");
+    playBtnSmall.classList.add("d-none"); //cambio i pulsanti
+    pauseBtnSmall.classList.remove("d-none");
     isPlaying = true;
   });
 
@@ -232,10 +264,15 @@ document.addEventListener("DOMContentLoaded", () => {
     audio.pause();
     playBtnWrapper.classList.remove("d-none");
     pauseBtnWrapper.classList.add("d-none");
+    playBtnSmall.classList.remove("d-none");
+    pauseBtnSmall.classList.add("d-none");
     isPlaying = false;
   }
   // Funzionamento per PAUSE track
   pauseBtnWrapper.addEventListener("click", () => {
+    pauseTrack();
+  });
+  pauseBtnSmall.addEventListener("click", () => {
     pauseTrack();
   });
 

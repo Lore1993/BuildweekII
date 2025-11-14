@@ -114,35 +114,45 @@
               <div class="col col-3">
                 <img
                   src=""
-                  class="img-fluid rounded-2 object-fit-cover"
+                  class="img-fluid object-fit-cover rounded-circle"
                   alt="album pic"
                   id="album-pic-small"
                 />
               </div>
               <!--FINE COLONNA1-->
               <!--Inizio colonna2-->
-              <div class="col col-6">
+              <div class="col col-5 d-flex text-center">
                 <h5
-                  class="card-title m-0 text-white"
+                  class="card-title m-0 text-white align-self-center"
                   id="title-track-small"
                 ></h5>
               </div>
               <!--FINE COLONNA2-->
               <!--INIZIO COLONNA3-->
-              <div class="col col-3 flex-row pe-0 text-end">
-                <p class="d-inline mb-0 me-2"><i class="bi bi-speaker"></i></p>
-                <p class="d-inline mb-0 me-2">
+              <div
+                class="col col-4 flex-row pe-0 text-end d-flex justify-content-end"
+              >
+                <p class="d-inline mb-0 me-2 align-self-center">
+                  <i class="bi bi-speaker"></i>
+                </p>
+                <p class="d-inline mb-0 me-2 align-self-center">
                   <i
                     onclick="like(this)"
                     role="button"
                     class="bi bi-suit-heart-fill"
                   ></i>
                 </p>
-                <p class="d-inline mb-0 fs-4 player-btn me-2" id="play-small">
+                <p
+                  class="d-inline mb-0 me-0 fs-4 player-btn me-0 align-self-center"
+                  id="play-small"
+                >
                   <i class="bi bi-play-circle-fill text-white"></i>
                 </p>
                 <!-- ICONA PAUSE ID pause (scambiare d-inline e d-none)-->
-                <p class="mb-0 fs-4 d-none me-2" id="pause-small">
+                <p
+                  class="mb-0 fs-4 d-inline d-none me-0 align-self-center"
+                  id="pause-small"
+                >
                   <i class="bi bi-pause-circle-fill"></i>
                 </p>
               </div>
