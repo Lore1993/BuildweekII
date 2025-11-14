@@ -121,11 +121,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const playBtnWrapper = document.getElementById("play"); // elemento che contiene l'icona play
   const pauseBtnWrapper = document.getElementById("pause"); // elemento che contiene l'icona pause
-  const prevBtn =
-    document.querySelector(".bi-skip-backward-fill")?.closest("p") || null;
-  const nextBtn =
-    document.querySelector(".bi-skip-forward-fill")?.closest("p") || null;
-
+  const prevBtn = document.getElementById("backward");
+  const nextBtn = document.getElementById("forward");
   const progressInput = document.getElementById("player"); // input range per progresso
   const currentTimeEl = document.getElementById("current-time");
   const totalDurationEl = document.getElementById("total-duration");
@@ -205,6 +202,23 @@ document.addEventListener("DOMContentLoaded", () => {
     playTrack(index);
   });
 
+  playBtnWrapper.addEventListener("click", () => {
+    // se non c'è una traccia corrente, avvia la prima
+    if (currentIndex === null) {
+      // prova a trovare la prima traccia dell'album corrente, prende tutte le tracce, controlla che .lenght sia > 0 e fa partire la traccia
+      const tracks = albumData?.tracks?.data || [];
+      if (tracks.length > 0) {
+        playTrack(0);
+        return;
+      } else return;
+    }
+    // se abbiamo una canzone  caricato e in pausa -> play
+    audio.play().catch((e) => console.warn(e)); //faccio partire l'audio e aggiungo controllo errori
+    playBtnWrapper.classList.add("d-none"); //cambio i pulsanti
+    pauseBtnWrapper.classList.remove("d-none");
+    isPlaying = true;
+  });
+
   // PAUSE track   NON FUNZIONA!!!!!!!!!!!!!
   function pauseTrack() {
     audio.pause();
@@ -220,7 +234,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // VOLUME: mappa valore input -> audio.volume (0..1)
   function setVolumeFromInput() {
     if (!volumeInput) return;
-    const val = Number(volumeInput.value || 0);
+    const val = Number(volumeInput.value || 2);
     const max = Number(volumeInput.max || 100);
     // se max è 1, usalo direttamente; altrimenti normalizza
     audio.volume = max === 1 ? val : val / max;
