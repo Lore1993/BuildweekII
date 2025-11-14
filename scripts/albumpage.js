@@ -5,7 +5,6 @@ const allTheParameters = new URLSearchParams(url);
 const id = allTheParameters.get("albumId");
 console.log("ID", id);
 const tabellaPrinci = document.getElementById("tabella-principale");
-const cuore = document.getElementById("cuore");
 
 const getDetails = function () {
   fetch(baseUrl + id)
@@ -91,9 +90,9 @@ const getDetails = function () {
 
 getDetails();
 
-cuore.addEventListener("click", () => {
-  cuore.classList.toggle("text-danger");
-});
+const like = function (e) {
+  e.classList.toggle("text-danger");
+};
 
 //questa funzione "parte" anche se dichiarato dopo la chiamata (riga 39) per via di com'è scritta
 // se l'avessimo scritta così: const formatDuration = (seconds) => { ... } dovevamo dichiararla prima di chiamarla

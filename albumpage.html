@@ -64,7 +64,10 @@
               <a
                 href="#"
                 class="d-block my-0 text-secondary text-decoration-none"
-                ><i class="bi bi-suit-heart-fill text-primary"></i>
+                ><i
+                  onclick="like(this)"
+                  class="bi bi-suit-heart-fill text-primary"
+                ></i>
                 <p class="d-inline ms-2">Brani che ti piacciono</p></a
               >
               <a
@@ -224,7 +227,7 @@
               <i class="bi bi-play-fill fs-3"></i>
             </button>
             <button class="px-4 py-2 border-0 bg-transparent text-white fs-3">
-              <i class="bi bi-suit-heart-fill" id="cuore"></i>
+              <i onclick="like(this)" class="bi bi-suit-heart-fill"></i>
             </button>
             <button class="px-4 py-2 bg-transparent border-0 text-white fs-3">
               <i class="far fa-arrow-alt-circle-down"></i>
@@ -451,7 +454,11 @@
                     </div>
                   </div>
                   <div class="col col-md-2">
-                    <i class="bi bi-suit-heart"></i>
+                    <i
+                      onclick="like(this)"
+                      role="button"
+                      class="bi bi-suit-heart-fill"
+                    ></i>
                   </div>
                 </div>
               </div>
@@ -460,14 +467,14 @@
             <!-- COLONNA 2 CENTRALE -->
             <div class="col col-6 text-center mt-3">
               <div class="col d-flex gap-5 justify-content-center">
-                <p class="d-inline mb-0 fs-4">
+                <p class="d-inline mb-0 fs-4 player-btn">
                   <i class="bi bi-shuffle text-success"></i>
                 </p>
-                <p class="d-inline mb-0 fs-4" id="backward">
+                <p class="d-inline mb-0 fs-4 player-btn" id="backward">
                   <i class="bi bi-skip-backward-fill"></i>
                 </p>
                 <!-- ICONA PLAY ID play-->
-                <p class="d-inline mb-0 fs-4" id="play">
+                <p class="d-inline mb-0 fs-4 player-btn" id="play">
                   <i class="bi bi-play-circle-fill text-white"></i>
                 </p>
                 <!-- ICONA PAUSE ID pause (scambiare d-inline e d-none)-->
@@ -475,10 +482,10 @@
                   <i class="bi bi-pause-circle-fill"></i>
                 </p>
 
-                <p class="d-inline mb-0 fs-4" id="forward">
+                <p class="d-inline mb-0 fs-4 player-btn" id="forward">
                   <i class="bi bi-skip-forward-fill"></i>
                 </p>
-                <p class="d-inline mb-0 fs-4">
+                <p class="d-inline mb-0 fs-4 player-btn">
                   <i class="bi bi-repeat text-success"></i>
                 </p>
               </div>
