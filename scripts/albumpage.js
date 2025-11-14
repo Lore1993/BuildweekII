@@ -5,6 +5,7 @@ const allTheParameters = new URLSearchParams(url)
 const id = allTheParameters.get("albumId")
 console.log("ID", id)
 const tabellaPrinci = document.getElementById("tabella-principale")
+const cuore = document.getElementById("cuore")
 
 const getDetails = function () {
   fetch(baseUrl + id)
@@ -244,4 +245,8 @@ document.addEventListener("DOMContentLoaded", () => {
     setVolumeFromInput()
     volumeInput.addEventListener("input", setVolumeFromInput)
   }
+})
+
+cuore.addEventListener("click", () => {
+  cuore.classList.toggle("text-danger")
 })
