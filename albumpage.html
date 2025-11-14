@@ -42,7 +42,7 @@
                 <p class="d-inline ms-2">Home</p></a
               >
               <a
-                href="#"
+                href="./searchpage.html"
                 class="d-block my-0 text-secondary text-decoration-none"
                 ><i class="bi bi-search"></i>
                 <p class="d-inline ms-2">Cerca</p>
@@ -135,21 +135,25 @@
 
         <!-- DIV CENTRALE MEDIUM-->
         <div
-          class="col col-12 col-md-8 flex-column vh-100 bg-div-centrale px-3 py-2 overflow-auto gradient d-none d-md-flex"
+          class="col col-12 col-md-8 flex-column vh-100 px-3 py-2 overflow-auto gradient"
+          id="background-color"
         >
           <!-- Frecce + utente (lidia) -->
           <div class="d-flex flex-row gap-2 justify-content-between mb-2">
             <div class="align-self-center">
-              <a
-                href="#"
-                class="my-0 text-secondary text-decoration-none border-1 bg-black opacity-50 rounded-circle p-1 text-white"
-                ><i class="bi bi-chevron-left"></i
-              ></a>
-              <a
-                href="#"
-                class="my-0 text-secondary text-decoration-none border-1 bg-black opacity-50 rounded-circle p-1 text-white"
-                ><i class="bi bi-chevron-right"></i
-              ></a>
+              <button
+                onclick="history.back()"
+                class="my-0 text-secondary text-decoration-none border-1 bg-black opacity-50 rounded-circle text-white"
+              >
+                <i class="bi bi-chevron-left"></i>
+              </button>
+
+              <button
+                onclick="history.forward()"
+                class="my-0 text-secondary text-decoration-none border-1 bg-black opacity-50 rounded-circle text-white"
+              >
+                <i class="bi bi-chevron-right"></i>
+              </button>
             </div>
             <div
               class="btn rounded-pill bg-black py-1 px-2 dropdown-toggle active border-0"
@@ -183,6 +187,7 @@
                       class="img-fluid rounded-1 ms-3 mt-3"
                       alt="albumCover"
                       id="cover"
+                      crossorigin="anonymous"
                   /></a>
                 </div>
                 <div class="col-md-8">
@@ -193,7 +198,9 @@
                       id="linkAlbumTitle"
                       class="text-decoration-none text-white"
                     >
-                      <h1 class="card-title" id="albumTitle">Titolo</h1></a
+                      <h1 class="card-title display-3" id="albumTitle">
+                        Titolo
+                      </h1></a
                     >
                     <div>
                       <img
@@ -203,13 +210,7 @@
                         alt="cover Autore"
                       />
                       <p class="card-text d-inline" id="metaData">
-                        <a
-                          href="#"
-                          id="linkAuthor"
-                          class="text-decoration-none text-white"
-                          >Artista</a
-                        >
-                        • 0000 • 0 brani • 0 min
+                        Artista • 0000 • 0 brani • 0 min
                       </p>
                     </div>
                   </div>
@@ -233,7 +234,7 @@
           </div>
           <!-- FINE PULSANTI -->
           <!-- INIZIO LISTA TRACK TABELLA -->
-          <table class="table">
+          <table class="table" id="tabella-principale">
             <thead>
               <tr>
                 <th class="bg-transparent text-secondary" scope="col">#</th>
@@ -241,14 +242,22 @@
                   Titolo
                 </th>
                 <th class="bg-transparent text-secondary" scope="col">
-                  Rirpoduzioni
+                  Riproduzioni
                 </th>
                 <th class="bg-transparent text-secondary" scope="col">
                   <i class="bi bi-clock"></i>
                 </th>
               </tr>
             </thead>
-            <tbody id="tabella"></tbody>
+            <tbody id="tabella">
+              <!-- Qui andranno le track generate da JS -->
+              <!-- esempio html -->
+              <!-- <th scope="row">1</th>
+                    <td>Mark</td> -- Titolo
+                     <td>Otto</td> -- rirpoduzioni /rank
+                     <td>@mdo</td> -- durata  
+                     -->
+            </tbody>
           </table>
           <!-- FINE TABELLA -->
         </div>
@@ -271,7 +280,7 @@
                 <div class="col-md-2">
                   <img
                     src="https://placebear.com/30/30"
-                    class="img-fluid rounded-start rounded-circle"
+                    class="img-fluid rounded-circle"
                     alt="propic"
                   />
                 </div>
@@ -299,7 +308,7 @@
                 <div class="col-md-2">
                   <img
                     src="https://img.freepik.com/premium-vector/bob-marley-icon-vector-design-with-dreadlocks-rastafarian-beanie_1281016-796.jpg?"
-                    class="img-fluid rounded-start rounded-circle"
+                    class="img-fluid rounded-circle"
                     alt="propic"
                     style="width: 30px; height: 30px"
                   />
@@ -327,7 +336,7 @@
                 <div class="col-md-2">
                   <img
                     src="https://placedog.net/30/30"
-                    class="img-fluid rounded-start rounded-circle"
+                    class="img-fluid rounded-circle"
                     alt="propic"
                   />
                 </div>
@@ -354,8 +363,8 @@
               <div class="row g-0">
                 <div class="col-md-2">
                   <img
-                    src="https://place-puppy.com/puppy/y:20/x:20"
-                    class="img-fluid rounded-start rounded-circle"
+                    src="https://placedog.net/30/30/?id=30"
+                    class="img-fluid rounded-circle"
                     alt="propic"
                   />
                 </div>
@@ -385,7 +394,7 @@
                 <div class="col-md-2">
                   <img
                     src="https://baconmockup.com/30/30"
-                    class="img-fluid rounded-start rounded-circle"
+                    class="img-fluid rounded-circle"
                     alt="propic"
                   />
                 </div>
@@ -410,8 +419,118 @@
           </div>
         </div>
       </div>
+      <!-- PLAYER MUSICALE!!!!!!!!!!!!!!! -->
+      <div class="bg-dark fixed-bottom flex-column">
+        <div class="container-fluid d-none d-md-flex">
+          <div class="flex-row row text-white w-100">
+            <!-- COLONNA 1 -->
+            <div class="col col-3 text-start align-self-center mt-3">
+              <div class="card mb-3 bg-transparent text-white border-0">
+                <div class="row g-0">
+                  <div class="col-md-2">
+                    <!-- ID album-pic per l'img dell'album -->
+                    <img
+                      src=""
+                      class="img-fluid rounded-2 object-fit-cover"
+                      alt="album pic"
+                      id="album-pic"
+                    />
+                  </div>
+                  <div class="col-md-8">
+                    <!-- ID title-track per il titolo della canzone -->
+                    <div class="card-body py-0 ps-2">
+                      <h5
+                        class="card-title m-0 text-white"
+                        id="title-track"
+                      ></h5>
+                      <!-- ID artist-name per il nome dell'artista -->
+                      <p
+                        class="card-text text-white-50 m-0"
+                        id="artist-name"
+                      ></p>
+                    </div>
+                  </div>
+                  <div class="col col-md-2">
+                    <i class="bi bi-suit-heart"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- FINE COLONNA 1 -->
+            <!-- COLONNA 2 CENTRALE -->
+            <div class="col col-6 text-center mt-3">
+              <div class="col d-flex gap-5 justify-content-center">
+                <p class="d-inline mb-0 fs-4">
+                  <i class="bi bi-shuffle text-success"></i>
+                </p>
+                <p class="d-inline mb-0 fs-4" id="backward">
+                  <i class="bi bi-skip-backward-fill"></i>
+                </p>
+                <!-- ICONA PLAY ID play-->
+                <p class="d-inline mb-0 fs-4" id="play">
+                  <i class="bi bi-play-circle-fill text-white"></i>
+                </p>
+                <!-- ICONA PAUSE ID pause (scambiare d-inline e d-none)-->
+                <p class="mb-0 fs-4 d-none" id="pause">
+                  <i class="bi bi-pause-circle-fill"></i>
+                </p>
+
+                <p class="d-inline mb-0 fs-4" id="forward">
+                  <i class="bi bi-skip-forward-fill"></i>
+                </p>
+                <p class="d-inline mb-0 fs-4">
+                  <i class="bi bi-repeat text-success"></i>
+                </p>
+              </div>
+              <div class="col">
+                <!-- ID current-time per il tempo trascorso -->
+                <span id="current-time" class="small d-inline m-0"></span>
+                <!-- ID  player per l'input range per ascoltare le canzoni -->
+                <input
+                  type="range"
+                  id="player"
+                  class="bg-secondary text-white d-inline w-75"
+                  min="0"
+                  value="0"
+                  step="1"
+                />
+                <!-- ID total-duration per la durata della traccia -->
+                <span id="total-duration" class="small d-inline m-0"></span>
+              </div>
+            </div>
+            <!-- FINE COLONNA 2 -->
+            <!-- COLONNA 3 -->
+            <div class="col col-3 text-end align-self-center mt-3">
+              <p class="d-inline mb-0"><i class="bi bi-mic"></i></p>
+              <p class="d-inline mb-0"><i class="bi bi-border-width"></i></p>
+              <p class="d-inline mb-0"><i class="bi bi-speaker"></i></p>
+              <p class="d-inline mb-0"><i class="bi bi-volume-up fs-5"></i></p>
+              <!-- INPUT RANGE PER IL VOLUME ID volume -->
+              <input
+                type="range"
+                class="bg-secondary text-white d-inline w-25"
+                min="0"
+                value="0"
+                step="1"
+                id="volume"
+              />
+              <p class="d-inline mb-0">
+                <i class="bi bi-arrows-angle-expand"></i>
+              </p>
+            </div>
+            <!-- FINE COLONNA 3 -->
+          </div>
+        </div>
+      </div>
+      <!-- FINE PLAYER -->
     </main>
     <script src="./scripts/albumpage.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.6.0/color-thief.min.js"
+      integrity="sha512-Qsp00gBIzIqLPECogMy5bQ6uOsMig9lc37A8qEHMvSze65UK21DHONbfSTY09zE9V8C0tQN+ldPU6w0wlBSfcA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"

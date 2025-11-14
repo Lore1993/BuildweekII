@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Home Page</title>
+    <title>Search Page</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -35,7 +35,7 @@
                 <p class="d-inline ms-2">Home</p></a
               >
               <a
-                href="./searchpage.html"
+                href="#"
                 class="d-block my-0 text-secondary text-decoration-none"
                 ><i class="bi bi-search"></i>
                 <p class="d-inline ms-2">Cerca</p>
@@ -126,13 +126,14 @@
 
         <!-- DIV CENTRALE MEDIUM-->
         <div
-          class="col col-12 col-md-8 flex-column vh-100 bg-div-centrale px-3 pt-2 pb-5 overflow-auto"
+          class="col col-12 col-md-8 flex-column vh-100 bg-div-centrale px-3 py-2 overflow-auto"
         >
           <!-- Frecce + utente (lidia) -->
           <div
             class="flex-row gap-2 justify-content-between mb-2 d-none d-md-flex"
           >
             <div class="align-self-center">
+              <!-- PULSANTI AVANTI ED INDIETRO BROWSER -->
               <button
                 onclick="history.back()"
                 class="my-0 text-secondary text-decoration-none border-1 bg-black opacity-50 rounded-circle text-white"
@@ -157,101 +158,46 @@
               <ul class="dropdown-menu bg-black">
                 <li>
                   <a class="dropdown-item text-white hover-black" href="#"
-                    >Diana</a
+                    >Collega un altro account</a
                   >
                 </li>
                 <li>
                   <a class="dropdown-item text-white hover-black" href="#"
-                    >Lulu</a
+                    >Disconnetti</a
                   >
                 </li>
               </ul>
             </div>
           </div>
-          <div class="gradient d-none d-md-flex">
-            <div class="card mb-3 gradient text-white pb-3 border-0">
-              <div class="row g-0">
-                <div class="col-md-3">
-                  <a href="#" id="linkAlbumImg" class="text-decoration-none"
-                    ><img
-                      src=""
-                      class="img-fluid rounded-1 ms-3 mt-3"
-                      alt="albumCover"
-                      id="cover"
-                  /></a>
-                </div>
-                <div class="col-md-6">
-                  <div class="card-body ms-3">
-                    <p class="card-text">ALBUM</p>
-                    <a
-                      href="#"
-                      id="linkAlbumTitle"
-                      class="text-decoration-none text-white"
-                    >
-                      <h1 class="card-title" id="songTitle">Titolo</h1></a
-                    >
-                    <a
-                      href="#"
-                      id="linkAuthor"
-                      class="text-decoration-none text-white"
-                      ><p class="card-text" id="author"></p
-                    ></a>
-                    <p class="card-text mt-2">
-                      <small class="text-white-50" id="description"></small>
-                    </p>
-                  </div>
-                  <div class="container mt-5">
-                    <button class="rounded-pill buttonplay px-4 py-2 ms-4 me-3">
-                      Play
-                    </button>
+          <!-- fine lidia -->
+          <!-- inizio barra di ricerca -->
+          <div class="w-100">
+            <nav class="navbar navbar-light bg-transparent mt-5">
+              <div class="container-fluid justify-content-center">
+                <form class="d-flex w-75" id="form">
+                  <div class="input-group">
                     <button
-                      class="rounded-pill px-4 py-2 border-white bg-transparent text-white"
+                      class="input-group-text bg-secondary border-0 btn buttonplay text-black"
+                      type="submit"
+                      id="btn-search"
                     >
-                      Salva
+                      <i class="bi bi-search"></i>
                     </button>
-
-                    <i class="bi bi-three-dots ms-3 text-secondary fs-3"></i>
+                    <input
+                      class="form-control me-2 opacity-50 text-black"
+                      type="search"
+                      placeholder="Cosa vuoi ascoltare"
+                      aria-label="Search"
+                      id="inputSearch"
+                    />
                   </div>
-                </div>
-
-                <div class="col-md-3 text-center">
-                  <button
-                    class="rounded-pill opacity-75 border-0 buttoncolor mt-3"
-                  >
-                    <small class="text-secondary">Nascondi annunci</small>
-                  </button>
-                </div>
+                </form>
               </div>
-            </div>
+            </nav>
           </div>
-          <!-- CONTAINER BUONASERA + PLAYLIST -->
-          <div class="d-flex justify-content-between my-3">
-            <p class="d-inline fs-3 align-self-center m-0">
-              I tuoi artisti preferiti
-            </p>
-          </div>
+          <!-- fine barra di ricerca -->
           <div class="container">
-            <div class="row justify-content-around" id="row-Artist"></div>
-          </div>
-
-          <!-- Altro di ciò che ti piace -->
-          <div class="d-flex justify-content-between my-3">
-            <p class="d-inline fs-3 align-self-center m-0">
-              Altro di ciò che ti piace
-            </p>
-            <div class="d-flex">
-              <a
-                href="#"
-                class="text-decoration-none text-white-50 align-self-center"
-                >Visualizza tutto</a
-              >
-            </div>
-          </div>
-
-          <div class="container justify-content-center mb-5">
-            <div class="row g-4" id="rowAlbum">
-              <!-- album  -->
-            </div>
+            <div class="row" id="row-card"></div>
           </div>
         </div>
         <!-- AMICI -->
@@ -412,7 +358,7 @@
         </div>
       </div>
     </main>
-    <script src="./scripts/index.js"></script>
+    <script src="./scripts/searchpage.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
